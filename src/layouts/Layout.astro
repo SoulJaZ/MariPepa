@@ -1,0 +1,110 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+  title = "MariPepa | Growshop & Cultura Cannábica",
+  description = "Parafernalia, autocultivo, vaporizadores, semillas y más.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Título dinámico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+
+    <!-- Fuente personalizada -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- AOS Script  
+	AOS se carga antes de intentar usarlo.
+	AOS.init() solo se llama cuando el DOM ya está listo y AOS está en window.
+
+	-->
+	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+    <script defer>
+      window.addEventListener('DOMContentLoaded', () => {
+        AOS.init({
+          duration: 900,
+          once: true,
+        });
+      });
+    </script>
+	<script>
+  window.addEventListener("scroll", () => {
+    const scrollProgress = document.querySelector(".scroll-progress");
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+	
+    scrollProgress.style.width = scrollPercent + "%";
+  });
+</script>
+<script>
+  const canvas = document.getElementById("neblina");
+  if (canvas) {
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 30 + 10,
+        dx: (Math.random() - 0.5) * 0.5,
+        dy: (Math.random() - 0.5) * 0.5,
+        alpha: Math.random() * 0.3 + 0.1,
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(118, 200, 147, ${p.alpha})`;
+        ctx.fill();
+
+        p.x += p.dx;
+        p.y += p.dy;
+
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+</script>
+
+
+  </body>
+</html>

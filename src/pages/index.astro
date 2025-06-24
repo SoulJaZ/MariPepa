@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="MariPepa | Growshop & Cultura Cannábica"
+  description="Parafernalia, autocultivo, vaporizadores, semillas y más."
+>
+  <section class="hero" data-aos="flip-down" >
+	<canvas id="neblina" class="neblina-canvas"></canvas>
+    <div class="hero-content">
+	
+      <h1 data-aos="fade-down">Bienvenido a MariPepa</h1>
+      <p data-aos="fade" data-aos-delay="200">
+        Growshop & Cultura Cannábica
+      </p>
+      <a
+        href="/productos"
+        class="cta-button"
+        data-aos="zoom-in"
+        data-aos-delay="400">Ver productos</a
+      >
+    </div>
+  </section>
+
+  <section class="destacados" data-aos="flip-up" >
+    <h2 data-aos="zoom-in">Productos destacados</h2>
+    <div class="productos-grid" data-aos="zoom-out">
+      <div class="producto" data-aos="fade-right">
+        <img src="" alt="vaporizador1" />
+        <h3>Vaporizador 1</h3>
+        <p>Disfruta del sabor puro sin combustión</p>
+      </div>
+      <div class="producto" data-aos="fade-up">
+        <img src="" alt="bong1" />
+        <h3>Bong 1</h3>
+        <p>Diseño artístico con filtración premium.</p>
+      </div>
+      <div class="producto" data-aos="fade-left">
+        <img src="" alt="semillas1" />
+        <h3>Semillas 1</h3>
+        <p>Variedades seleccionadas para cultivo indoor/outdoor.</p>
+      </div>
+    </div>
+  </section>
+</Layout>
