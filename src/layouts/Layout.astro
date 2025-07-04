@@ -35,76 +35,77 @@ const {
   </head>
 
   <body>
-    <Navbar />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <div class="layout-wrapper">
+      <Navbar />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
 
     <!-- AOS Script  
 	AOS se carga antes de intentar usarlo.
 	AOS.init() solo se llama cuando el DOM ya está listo y AOS está en window.
 
 	-->
-	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script defer>
-      window.addEventListener('DOMContentLoaded', () => {
+      window.addEventListener("DOMContentLoaded", () => {
         AOS.init({
           duration: 900,
           once: true,
         });
       });
     </script>
-	<script>
-  window.addEventListener("scroll", () => {
-    const scrollProgress = document.querySelector(".scroll-progress");
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = (scrollTop / docHeight) * 100;
-	
-    scrollProgress.style.width = scrollPercent + "%";
-  });
-</script>
-<script>
-  const canvas = document.getElementById("neblina");
-  if (canvas) {
-    const ctx = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    <script>
+      window.addEventListener("scroll", () => {
+        const scrollProgress = document.querySelector(".scroll-progress");
+        const scrollTop = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
 
-    const particles = [];
-
-    for (let i = 0; i < 60; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 30 + 10,
-        dx: (Math.random() - 0.5) * 0.5,
-        dy: (Math.random() - 0.5) * 0.5,
-        alpha: Math.random() * 0.3 + 0.1,
+        scrollProgress.style.width = scrollPercent + "%";
       });
-    }
+    </script>
+    <script>
+      const canvas = document.getElementById("neblina");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let p of particles) {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(118, 200, 147, ${p.alpha})`;
-        ctx.fill();
+        const particles = [];
 
-        p.x += p.dx;
-        p.y += p.dy;
+        for (let i = 0; i < 60; i++) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 30 + 10,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5,
+            alpha: Math.random() * 0.3 + 0.1,
+          });
+        }
 
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let p of particles) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(118, 200, 147, ${p.alpha})`;
+            ctx.fill();
+
+            p.x += p.dx;
+            p.y += p.dy;
+
+            if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+          }
+          requestAnimationFrame(animate);
+        }
+        animate();
       }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }
-</script>
-
-
+    </script>
   </body>
 </html>
