@@ -316,4 +316,68 @@ a {
   opacity: 1;
 }
 
+/* Contacto Styles*/
+.contacto-section{
+  padding: 4rem 2rem;
+  background-color: var(--color-bg);
+  color: var(--color-texto);
+  display: flex;
+  justify-content: center;
+}
+.contacto-contenedor{
+  max-width: 600px;
+  width: 100%;
+  background-color: var(--color-destacado);
+  padding: 3rem;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.contacto-titulo{
+  text-align: center;
+  font-size: 1rem;
+  color: var(--color-acento);
+  margin-bottom: 2rem;
+}
+.contacto-descripcion{
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-secundario);
+}
+.contacto-formulario{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.contacto-formulario label {
+  font-weight: 600;
+  color: var(--color-secundario);
+}
+.contacto-formulario input,
+.contacto-formulario textarea {
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  color: var(--color-secundario);
+  font-size: 1rem;
+}
 
+.contacto-formulario input:focus,
+.contacto-formulario textarea:focus {
+  outline: 2px solid var(--color-bg);
+}
+.boton-enviar {
+  padding: 0.8rem;
+  border: none;
+  background-color: var(--color-acento);
+  color: var(--color-secundario);
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-enviar:hover {
+  background-color: #9fe3b5;
+}

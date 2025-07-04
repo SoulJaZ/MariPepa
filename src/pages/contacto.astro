@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Contáctanos | MariPepa"
+  description="¿Tienes preguntas? ¡Estamos aquí para ayudarte!"
+>
+  <section class="contacto-section" data-aos="fade-up">
+    <div class="contacto-contenedor">
+      <h1 class="contacto-titulo">Contáctanos</h1>
+      <p class="contacto-descripcion">
+        ¿Tienes dudas sobre nuestros productos o servicios? Rellena el formulario y nos pondremos en contacto contigo.
+      </p>
+
+      <form class="contacto-formulario">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+        <button type="submit" class="boton-enviar">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
+</Layout>
